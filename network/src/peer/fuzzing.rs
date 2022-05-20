@@ -25,7 +25,7 @@ use std::time::Duration;
 /// Generate a sequence of `NetworkMessage`, bcs serialize them, and write them
 /// out to a buffer using our length-prefixed message codec.
 pub fn generate_corpus(gen: &mut ValueGenerator) -> Vec<u8> {
-    let network_msgs = gen.generate(vec(any::<NetworkMessage>(), 1..20));
+    let network_msgs = gen.generate(vec(any::<NetworkMessage>(), 1..22));
 
     let (write_socket, mut read_socket) = MemorySocket::new_pair();
     let mut writer = NetworkMessageSink::new(write_socket, constants::MAX_FRAME_SIZE, None);
